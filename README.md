@@ -72,4 +72,11 @@ Why:
 
 Real output:
 
+```
+1
+5
+```
+
 Was I right?
+
+Yes. Both lines matched my prediction.
