@@ -45,3 +45,46 @@ class BusCard {
     }
   }
 }
+
+class StudentCard extends BusCard {
+  int _discount = 0;
+
+  StudentCard(String owner, int balance, int discount)
+      : super(owner, balance) {
+    _discount = discount;
+  }
+
+  @override
+  void showInfo() {
+    super.showInfo();
+    print('Student card: $_discount% off');
+  }
+
+  @override
+  void pay(int fare) {
+    int off = fare * _discount ~/ 100;
+    print('Student discount: $off RWF');
+    super.pay(fare - off);
+  }
+}
+
+void main() {
+  BusCard card = BusCard('Osman', 1690);
+  card.owner = 'Al';
+  card.showInfo();
+
+  card.owner = 'Osman Albager Mohamed Saeed';
+  card.showInfo();
+
+  card.topUp(100);
+  card.topUp(2000);
+
+  card.pay(269);
+  card.pay(269);
+  card.showInfo();
+
+  StudentCard student = StudentCard('Osman Albager Mohamed Saeed', 1690, 19);
+
+  student.pay(269);
+  student.showInfo();
+}
